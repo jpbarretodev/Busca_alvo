@@ -34,7 +34,7 @@ class cacador():
                 resultado = self.buscar()
                 #print(resultado)
 
-                if "alvo" in resultado[0]:
+                if "" in resultado[0]: #adicionar o nome do arquivo que deseja achar
                     print("Alvo encontrado no caminho: {}".format(os.getcwd()))
                     break
                 else:
