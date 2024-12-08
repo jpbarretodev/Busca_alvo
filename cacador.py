@@ -8,11 +8,11 @@ dicio = {}
 class cacador():
 
     def __init__(self, raiz):
-        self.raiz = raiz
+        self.raiz = raiz #recebe o diretório principal em que, toda vez, terá como ponto de partida e de volta
         self.diretorio_atual = self.raiz
 
     def buscar(self):
-        caminhos_possiveis = os.listdir(self.diretorio_atual) #recolho somente o nome das pastas
+        caminhos_possiveis = os.listdir(self.diretorio_atual) #recolhe somente o nome dos diretórios
         return caminhos_possiveis, len(caminhos_possiveis) #retorna os nomes e a quantidade
         
 
@@ -42,11 +42,11 @@ class cacador():
                     #print(caminhos_percorridos)
 
 #objeto instanciado, NÃO MEXER
-objeto = cacador("/home/hunter/Documentos/codigos/Floresta")
+objeto = cacador("") #cria um objeto (o diretório onde será realizada a busca)
 objeto.entrar()
 
 #armazena no log em json
 for i, j in enumerate(caminhos_percorridos):
     dicio["tentativa: {}".format(i+1)] = "caminho percorrido: {}".format(j)
-with open("/home/hunter/Documentos/codigos/log.json", "w") as arq:
+with open("", "w") as arq: #aqui vai o caminho completo para o arquivo json
     json.dump(dicio, arq, indent=4)
