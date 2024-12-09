@@ -12,7 +12,7 @@ class cacador():
         self.diretorio_atual = self.raiz
 
     def buscar(self):
-        caminhos_possiveis = os.listdir(self.diretorio_atual) #recolho somente o nome das pastas
+        caminhos_possiveis = os.listdir(self.diretorio_atual) #recolhe somente o nome dos diretórios
         return caminhos_possiveis, len(caminhos_possiveis) #retorna os nomes e a quantidade
         
 
@@ -41,12 +41,17 @@ class cacador():
                     print("Alvo não encontrado\n")
                     #print(caminhos_percorridos)
 
-#objeto instanciado, NÃO MEXER
-objeto = cacador("/home/hunter/Documentos/codigos/Floresta")
-objeto.entrar()
+#objeto instanciado
+cacador = cacador("") #indicar o caminho completo do diretório pai onde será realizada a busca
+cacador.entrar()
 
 #armazena no log em json
 for i, j in enumerate(caminhos_percorridos):
     dicio["tentativa: {}".format(i+1)] = "caminho percorrido: {}".format(j)
-with open("/home/hunter/Documentos/codigos/log.json", "w") as arq:
+
+with open("", "w") as arq: #indicar o caminho completo onde será salvo o arquivo json de log
     json.dump(dicio, arq, indent=4)
+
+with open("", "a+") as arq: #indicar o caminho completo onde será salvo o arquivo txt de log
+    for i, j in dicio.items():
+        arq.write("{}: {}\n".format(i, j))
