@@ -13,7 +13,6 @@ class cacador():
 
     def buscar(self):
         caminhos_possiveis = os.listdir(self.diretorio_atual) #recolhe somente o nome dos diretórios
-        caminhos_possiveis = os.listdir(self.diretorio_atual) #recolhe somente o nome dos diretórios
         return caminhos_possiveis, len(caminhos_possiveis) #retorna os nomes e a quantidade
         
 
