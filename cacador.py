@@ -7,8 +7,9 @@ dicio = {}
 
 class cacador():
 
-    def __init__(self, raiz):
+    def __init__(self, raiz, alvo):
         self.raiz = raiz #recebe o diretório principal em que, toda vez, terá como ponto de partida e de volta
+        self.alvo = alvo #recolhe o nome do alvo a ser buscado
         self.diretorio_atual = self.raiz
 
     def buscar(self):
@@ -34,7 +35,7 @@ class cacador():
                 resultado = self.buscar()
                 #print(resultado)
 
-                if "" in resultado[0]: #adicionar o nome do arquivo que deseja achar
+                if self.alvo in resultado[0]: #adicionar o nome do arquivo que deseja achar
                     print("Alvo encontrado no caminho: {}".format(os.getcwd()))
                     break
                 else:
@@ -42,7 +43,7 @@ class cacador():
                     #print(caminhos_percorridos)
 
 #objeto instanciado
-cacador = cacador("") #indicar o caminho completo do diretório pai onde será realizada a busca
+cacador = cacador("", "") #indicar o caminho completo do diretório pai onde será realizada a busca e o nome do alvo (com extensão se for um arquivo específico)
 cacador.entrar()
 
 #armazena no log em json
@@ -52,6 +53,6 @@ for i, j in enumerate(caminhos_percorridos):
 with open("", "w") as arq: #indicar o caminho completo onde será salvo o arquivo json de log
     json.dump(dicio, arq, indent=4)
 
-with open("", "a+") as arq: #indicar o caminho completo onde será salvo o arquivo txt de log
+with open("", "a+") as arq: #indicar o caminho completo onde será salvo o arquivo txt de log (opcional)
     for i, j in dicio.items():
         arq.write("{}: {}\n".format(i, j))
